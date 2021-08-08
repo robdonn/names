@@ -13,17 +13,22 @@ const MIDDLE = {
   [GENDERS.GIRL]: 'Ann',
 };
 
-const getRandomName = (gender) => {
-  const index = Math.floor(Math.random() * names[gender].length);
-  console.log(index);
-
-  return names[gender][index];
-};
-
 function App() {
   const [name, setName] = useState('');
   const [gender, setGender] = useState(GENDERS.BOY);
   const [fullName, setFullName] = useState(`${name} Matthew Donnelly`);
+  const [tracker, setTracker] = useState(0);
+
+  const getRandomName = (gender) => {
+    console.log(tracker);
+    if (tracker >= names[gender].length) {
+      setTracker(0);
+      return names[gender][0];
+    }
+
+    setTracker(tracker + 1);
+    return names[gender][tracker];
+  };
 
   const onRefresh = () => {
     setName(getRandomName(gender));

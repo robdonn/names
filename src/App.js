@@ -15,6 +15,7 @@ const MIDDLE = {
 
 const getRandomName = (gender) => {
   const index = Math.floor(Math.random() * names[gender].length);
+  console.log(index);
 
   return names[gender][index];
 };
